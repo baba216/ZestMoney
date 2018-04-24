@@ -13,6 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * This is the main Controller class which is responsible to init different process involved for game
+ *
+ * @see GamePlay#start()
+ */
 public final class GamePlay {
 
   private Scanner scanner;
@@ -26,6 +31,9 @@ public final class GamePlay {
     this.moveHistory = new LinkedList<PlayerMove>();
   }
 
+  /**
+   * This is the main method which init the game
+   */
   public void start() {
     this.firstPlayer = this.getPlayer();
     this.secondPlayer = this.getPlayer();
@@ -57,6 +65,9 @@ public final class GamePlay {
     this.showFinalBattleResult(battleResult.getPlayerBattleResult(), this.time);
   }
 
+  /**
+   * Helper method which shows the final Game Result
+   */
   private void showFinalBattleResult(Map<Player, PlayerBattleResult> playerBattleResult,
       Long time) {
     System.out.println("\n\n\n\n ========= Result =========\n");
@@ -69,6 +80,9 @@ public final class GamePlay {
     });
   }
 
+  /**
+   * Helper method which is responsible for a fight between 2 cards
+   */
   private CardFightResult fight(PlayerMove firstPlayerMove, PlayerMove secondPlayerMove) {
     Card winingCard = firstPlayerMove.getCard().fight(secondPlayerMove.getCard());
     if (winingCard == firstPlayerMove.getCard()) {
@@ -80,6 +94,11 @@ public final class GamePlay {
     return new CardFightResult(null, 0, 0);
   }
 
+  /**
+   * Helper method which helps the player to select a card for a fight
+   *
+   * @see GamePlay#assignCardsToPlayer(Player)
+   */
   private Card selectCard(Player player) {
     System.out.println("\n=========== player: " + player.getName() + " ========\n");
     System.out.println(" Hi " + player.getName()
@@ -108,25 +127,28 @@ public final class GamePlay {
     }
   }
 
+  /**
+   * This method helps Player to setup the battle deck
+   */
   private void assignCardsToPlayer(Player player) {
     System.out.println(
         "\nHi !! " + player.getName() + ", Please select any 3 cards. Your options are:\n");
     for (CardName cardName : CardName.values()) {
-      System.out.println((Object) cardName);
+      System.out.println(cardName);
     }
     System.out.println("You can select the id of cards.....");
     int numberOfCards = 3;
-    ArrayList<Card> cards = new ArrayList<Card>(3);
+    ArrayList<Card> cards = new ArrayList<>(3);
     while (numberOfCards != 0) {
       System.out.println("\n Please select the card:");
       String id = this.scanner.next();
-      Card cardSelected = (Card) CardName.cardById.get(Integer.parseInt(id));
-      System.out.println("You have selected : " + (Object) cardSelected.name());
+      Card cardSelected = CardName.cardById.get(Integer.parseInt(id));
+      System.out.println("You have selected : " + cardSelected.name());
       System.out.println("Continue ? (Press Y/y) :");
       String shouldContinue = this.scanner.next();
       if (!shouldContinue.equalsIgnoreCase("Y"))
         continue;
-      if (cards.contains((Object) cardSelected)) {
+      if (cards.contains(cardSelected)) {
         System.out.println("You have already selected this card.");
         continue;
       }
@@ -136,6 +158,9 @@ public final class GamePlay {
     player.setCards(cards);
   }
 
+  /**
+   * Helper method which helps in setting up Player for a game
+   */
   private Player getPlayer() {
     System.out.println("\n\n==== player Setting ====\n\n");
     System.out.println("Enter you name:");

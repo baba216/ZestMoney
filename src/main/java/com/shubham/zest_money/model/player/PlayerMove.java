@@ -1,7 +1,6 @@
 package com.shubham.zest_money.model.player;
 
 import com.shubham.zest_money.model.card.Card;
-import com.shubham.zest_money.model.player.Player;
 
 public class PlayerMove {
   private final Player player;

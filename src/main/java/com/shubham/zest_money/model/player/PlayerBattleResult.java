@@ -1,7 +1,5 @@
 package com.shubham.zest_money.model.player;
 
-import com.shubham.zest_money.model.player.Player;
-
 public class PlayerBattleResult {
   private final Player player;
   private Integer cardsWon;

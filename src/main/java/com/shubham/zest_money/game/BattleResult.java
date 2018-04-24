@@ -1,12 +1,11 @@
 package com.shubham.zest_money.game;
 
-import com.shubham.zest_money.game.CardFightResult;
 import com.shubham.zest_money.model.player.Player;
 import com.shubham.zest_money.model.player.PlayerBattleResult;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 
 public class BattleResult {
   private Map<Player, PlayerBattleResult> playerBattleResult;
@@ -25,7 +24,7 @@ public class BattleResult {
   }
 
   public void evaluate() {
-    HashMap<Player, PlayerBattleResult> playerBattleResult = new HashMap<Player, PlayerBattleResult>();
+    HashMap<Player, PlayerBattleResult> playerBattleResult = new HashMap<>();
     this.cardFightResults.forEach(cardFightResult -> {
           Player winningPlayer = cardFightResult.getWinningSide();
           if (winningPlayer != null) {
@@ -36,7 +35,7 @@ public class BattleResult {
             PlayerBattleResult playerResult = playerBattleResult.getOrDefault((Object)winningPlayer, new PlayerBattleResult(winningPlayer));
             playerResult.setExpGained(playerResult.getExpGained() + expGained);
             playerResult.setGoldGained(playerResult.getGoldGained() + goldGained);
-            playerResult.setCardsWon(Integer.valueOf(playerResult.getCardsWon() + 1));
+            playerResult.setCardsWon(playerResult.getCardsWon() + 1);
             playerBattleResult.put(winningPlayer, playerResult);
           }
         }

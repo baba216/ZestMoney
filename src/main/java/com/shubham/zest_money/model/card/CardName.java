@@ -1,26 +1,24 @@
 package com.shubham.zest_money.model.card;
 
-import com.shubham.zest_money.model.card.Archer;
-import com.shubham.zest_money.model.card.Barbarian;
-import com.shubham.zest_money.model.card.Card;
-import com.shubham.zest_money.model.card.Goblin;
-import com.shubham.zest_money.model.card.Golem;
-import com.shubham.zest_money.model.card.Knight;
-import com.shubham.zest_money.model.card.Musketeer;
-import com.shubham.zest_money.model.card.SwordsMan;
-import com.shubham.zest_money.model.card.Witch;
-import com.shubham.zest_money.model.card.Wizard;
-
 import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+/**
+ *  Enums helps as a mapper between Card Name, Card Id and instance of Card associated with that card
+ *  @see Card
+ */
 public enum CardName {
-  KNIGHT(1, "Knight"), SWORDSMAN(2, "Swordsman"), ARCHER(3, "Archer"), WIZARD(4, "Wizard"), WITCH(5,
-      "Witch"), GOBLIN(6, "GOBLIN"), BARBARIAN(7, "Barbarian"), MUSKETEER(8, "MUSKETEER"), GOLEM(9,
-      "GOLEM");
+  KNIGHT(1, "Knight"),
+  SWORDSMAN(2, "Swordsman"),
+  ARCHER(3, "Archer"),
+  WIZARD(4, "Wizard"),
+  WITCH(5, "Witch"),
+  GOBLIN(6, "GOBLIN"),
+  BARBARIAN(7, "Barbarian"),
+  MUSKETEER(8, "MUSKETEER"),
+  GOLEM(9, "GOLEM");
 
   private String card;
   private int id;

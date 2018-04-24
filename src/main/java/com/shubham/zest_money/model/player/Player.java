@@ -3,13 +3,16 @@ package com.shubham.zest_money.model.player;
 import com.shubham.zest_money.model.card.Card;
 import java.util.List;
 
+/**
+ * Main Player class which sets up the Player object
+ */
 public class Player {
   private final String name;
-  private List<Card> cards;
-  private int gold;
+  private List<Card> cards; // battle deck
+  private int gold; // gold with player
   private int level;
   private int experience;
-  private volatile int elixir;
+  private volatile int elixir; // elixir player have in a game
 
   public Player(String name) {
     this.name = name;
